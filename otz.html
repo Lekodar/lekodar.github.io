@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Оставьте свой отзыв</h1>
-        <form id="reviewForm" method="POST" action="/submit_review">
+        <form id="reviewForm">
             <label for="name">Ваше имя:</label>
             <input type="text" id="name" name="name" required>
 
@@ -21,6 +21,7 @@
 
             <button type="submit">Отправить отзыв</button>
         </form>
+        <p id="responseMessage"></p>
     </div>
     <script src="script.js"></script>
 </body>
