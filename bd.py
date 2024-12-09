@@ -11,3 +11,9 @@ def save_links_to_db(links):
 
     conn.commit()
     conn.close()
+
+def evaluate_link_quality(link):
+    domain_authority = link['domain_authority']
+    page_authority = link['page_authority']
+    quality_score = (domain_authority + page_authority) / 2
+    return quality_score
