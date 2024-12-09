@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ поведенческих факторов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Анализ поведенческих факторов</h1>
+    <div id="report"></div>
+
+    <script>
+        // Пример данных
+        const userData = [
+            { timestamp: '2023-10-01', timeSpent: 300, clicks: 15 },
+            { timestamp: '2023-10-02', timeSpent: 275, clicks: 10 },
+            // ... другие данные
+        ];
+
+        const reportDiv = document.getElementById('report');
+        userData.forEach(data => {
+            const reportItem = document.createElement('div');
+            reportItem.innerText = `Дата: ${data.timestamp}, Время на сайте: ${data.timeSpent} сек, Количество кликов: ${data.clicks}`;
+            reportDiv.appendChild(reportItem);
+        });
+    </script>
+</body>
+</html>
