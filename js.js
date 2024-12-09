@@ -1,44 +1,32 @@
-// Функция для отслеживания времени на странице
-let startTime = Date.now();
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптимизация изображений</title>
+    <style>
+        /* Стили для адаптивного интерфейса */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
 
-window.addEventListener('beforeunload', function () {
-    let timeSpent = Date.now() - startTime; // Время, проведенное на странице в миллисекундах
-    let pageTitle = document.title;
+<h1>Пример страницы с оптимизированными изображениями</h1>
 
-    // Отправка данных на сервер 
-    navigator.sendBeacon('https://lekodar.github.io/api/track-time', JSON.stringify({
-        title: pageTitle,
-        timeSpent: timeSpent
-    }));
-});
+<script>
+    const image = document.createElement('img');
+    image.src = document.createElement('picture').innerHTML = `
+        <source srcset="image.webp" type="image/webp">
+        <img src="image.jpg" alt="Пример изображения">
+    `;
+    document.body.appendChild(image);
+</script>
 
-// Функция для отслеживания кликов по элементам
-document.addEventListener('click', function (event) {
-    let targetElement = event.target;
-    let elementType = targetElement.tagName; // Тип элемента (например, 'BUTTON', 'A', и т.д.)
-    let elementId = targetElement.id; // ID элемента, если он есть
-    let elementClass = targetElement.className; // Классы элемента
-
-    // Отправка данных о клике на сервер
-    navigator.sendBeacon('https://lekodar.github.io/api/track-click', JSON.stringify({
-        elementType: elementType,
-        elementId: elementId,
-        elementClass: elementClass,
-        pageTitle: document.title
-    }));
-});
-
-// Функция для отслеживания прокрутки страницы
-let lastScrollY = window.scrollY;
-
-window.addEventListener('scroll', function () {
-    let scrollY = window.scrollY;
-    // Проверка, насколько пользователь прокрутил страницу (на 100 пикселей вниз)
-    if (Math.abs(scrollY - lastScrollY) >= 100) {
-        navigator.sendBeacon('https://lekodar.github.io/api/track-scroll', JSON.stringify({
-            scrolledTo: scrollY,
-            pageTitle: document.title
-        }));
-        lastScrollY = scrollY; // Обновление значения последней прокрутки
-    }
-});
+</body>
+</html>
