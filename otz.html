@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сбор отзывов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Оставьте свой отзыв</h1>
+        <form id="reviewForm" method="POST" action="/submit_review">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Ваш Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="review">Ваш отзыв:</label>
+            <textarea id="review" name="review" required></textarea>
+
+            <button type="submit">Отправить отзыв</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
